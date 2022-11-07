@@ -12,9 +12,6 @@ public class ResponseHandler {
 		Map<String,Object> map=new HashMap<String, Object>();
 		map.put("message", Message);
         map.put("status", status.value());
-
-		
-
         return new ResponseEntity<Object>(map,status);
 		
 	}

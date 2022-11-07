@@ -6,10 +6,6 @@ import org.springframework.stereotype.Service;
 import com.availability.employeeStatus.EmployeeRepository.EmployeeRepository;
 import com.availability.employeeStatus.model.employeeStatus;
 import com.availibility.employeeStatus.service.EmployeeService;
-
-
-
-
 @Service
 public class EmployeeServiceimpl implements EmployeeService {
 	private EmployeeRepository employeeRepositoryA;
@@ -22,27 +18,33 @@ public class EmployeeServiceimpl implements EmployeeService {
 	}
 
 	@Override
-	public employeeStatus saveEmployeeS(employeeStatus employee) {
+	public employeeStatus saveEmployee(employeeStatus employee) {
 		employee.setStatus(true);
 		return employeeRepositoryA.save(employee);
 	}
 
 	@Override
-	public void updateEmployeeName(employeeStatus employee, String name) {
+	public String updateEmployeeName(employeeStatus employee, String name) {
        employeeStatus existingemployee= employeeRepositoryA.findByName(name);
 		
 		existingemployee.setName(employee.getName());
 		employeeRepositoryA.save(existingemployee);
+		return("Name changed");
 		}
       
 
 	@Override
-	public void deleteEmployeeS(String name) {
+	public String deleteEmployeeS(String name) {
 		employeeStatus emp=employeeRepositoryA.findByName(name);
 		if(emp.isStatus()) {
 		emp.setStatus(false);
 		employeeRepositoryA.save(emp);
-		}		
+		return("Status changed");	
+		}
+		else {
+			return("Status not changed");
+		}
+			
 	}
 
 	@Override

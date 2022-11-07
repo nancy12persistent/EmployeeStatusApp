@@ -23,12 +23,11 @@ public class EmployeeController {
 		super();
 		this.employeeService = employeeService;
 	}
-
 	//Build create employeeStatus REST API
 	@PostMapping(value="/save")
 	public ResponseEntity<employeeStatus> saveEmployee(@RequestBody employeeStatus employee) {
 			 if(employee.getName().matches("^[a-zA-Z0-9_ ]*$")) {
-			    employee=employeeService.saveEmployeeS(employee);
+			    employee=employeeService.saveEmployee(employee);
 	            return new ResponseEntity<>(employee, HttpStatus.CREATED);
 			}
 				else{
@@ -39,12 +38,10 @@ public class EmployeeController {
 	public void deleteEmployee(@PathVariable String name) {
 		employeeService.deleteEmployeeS(name);
 	}
-
     @PutMapping(value="/update/{name}")
 	public void updateEmployee(@PathVariable("name") String name,@RequestBody employeeStatus employee) {
 		employeeService.updateEmployeeName(employee, name);
 	 }
-  
 		
    //Build get all employee 
   @GetMapping(value="/getemployee")

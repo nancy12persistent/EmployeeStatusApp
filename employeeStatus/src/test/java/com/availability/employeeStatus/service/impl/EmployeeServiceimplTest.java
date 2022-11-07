@@ -1,7 +1,9 @@
 package com.availability.employeeStatus.service.impl;
 
+
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +40,7 @@ public class EmployeeServiceimplTest {
 	}
 	
 	//Find by name
-	@Test(expected=NullPointerException.class)
+	@Test
 	public void testGetEmployeeByName() {
 		/*boolean status=true;
 		employeeStatus employeeById=service.findByNameMethod("Namisha Gupta");
@@ -54,19 +56,19 @@ public class EmployeeServiceimplTest {
 	}
 
 	//Save employee
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testSaveEmployee(){
         // given
         given(repo.save(employee)).willReturn(employee);
         // when
-        employeeStatus savedEmployee = service.saveEmployeeS(employee);  
+        employeeStatus savedEmployee = service.saveEmployee(employee);  
         // then
         assertThat(savedEmployee).isNotNull();
     	
 	}
     
     //Update status to false
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testSetStatusFalse() {
     	// given-precondition or setup
         given(repo.save(employee)).willReturn(employee);
@@ -80,7 +82,8 @@ public class EmployeeServiceimplTest {
     	 }
     
     //Update Name 
-    @Test(expected=NullPointerException.class)
+    @Test
+    //(expected=NullPointerException.class)
     public void testSetName() {
     	// given-precondition or setup
     	given(repo.save(employee)).willReturn(employee);
@@ -94,7 +97,7 @@ public class EmployeeServiceimplTest {
     	 }
     
   // Get all Employees
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testGetAllEmployees(){ {
     	    employeeStatus employee1 = new employeeStatus();
     	    employee1.setId(4);
