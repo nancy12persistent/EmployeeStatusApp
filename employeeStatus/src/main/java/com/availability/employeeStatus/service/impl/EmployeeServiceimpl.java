@@ -34,7 +34,7 @@ public class EmployeeServiceimpl implements EmployeeService {
       
 
 	@Override
-	public String deleteEmployeeS(String name) {
+	public String deleteEmployee(String name) {
 		employeeStatus emp=employeeRepositoryA.findByName(name);
 		if(emp.isStatus()) {
 		emp.setStatus(false);

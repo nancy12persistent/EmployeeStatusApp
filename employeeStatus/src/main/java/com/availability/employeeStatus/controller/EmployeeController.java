@@ -1,6 +1,7 @@
 package com.availability.employeeStatus.controller;
 
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.availability.employeeStatus.ResponseHandler.ResponseHandler;
+
 import com.availability.employeeStatus.model.employeeStatus;
 import com.availibility.employeeStatus.service.EmployeeService;
+
 
 @RestController
 @RequestMapping("/employees")
@@ -25,18 +30,18 @@ public class EmployeeController {
 	}
 	//Build create employeeStatus REST API
 	@PostMapping(value="/save")
-	public ResponseEntity<employeeStatus> saveEmployee(@RequestBody employeeStatus employee) {
+	public ResponseEntity<Object> saveEmployee(@RequestBody employeeStatus employee) {
 			 if(employee.getName().matches("^[a-zA-Z0-9_ ]*$")) {
 			    employee=employeeService.saveEmployee(employee);
-	            return new ResponseEntity<>(employee, HttpStatus.CREATED);
+	           return ResponseHandler.generateResponse("Successfully data saved!", HttpStatus.CREATED);
 			}
 				else{
-					return new ResponseEntity<>(null, HttpStatus.MULTI_STATUS);
+				    return ResponseHandler.generateResponse("Enter the correct format", HttpStatus.MULTI_STATUS);	
 			}}
 	
 	@PutMapping(value="/updateStatus/{name}")
 	public void deleteEmployee(@PathVariable String name) {
-		employeeService.deleteEmployeeS(name);
+		employeeService.deleteEmployee(name);
 	}
     @PutMapping(value="/update/{name}")
 	public void updateEmployee(@PathVariable("name") String name,@RequestBody employeeStatus employee) {

@@ -10,7 +10,7 @@ public interface EmployeeService {
 	
 	String updateEmployeeName(employeeStatus employee,String name);
 	
-	String deleteEmployeeS(String name);
+	String deleteEmployee(String name);
 	
 	List<employeeStatus> getAllEmployeesStatus();
 	

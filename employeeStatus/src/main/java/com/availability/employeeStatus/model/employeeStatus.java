@@ -33,6 +33,12 @@ public class employeeStatus {
 		this.status = status;
 	}
 
+	public employeeStatus(String name, boolean status) {
+		this.name = name;
+		this.status = status;
+		
+	}
+
 	public long getId() {
 		return id;
 	}
