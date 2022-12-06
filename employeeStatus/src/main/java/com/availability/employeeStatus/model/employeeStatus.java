@@ -11,24 +11,24 @@ import lombok.Builder;
 
 @Builder
 @Entity
-@Table(name="EmployeeStatus")
+@Table(name = "EmployeeStatus")
 public class employeeStatus {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name="name", nullable=false)
+
+	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@Column(name="Status", nullable=false)
+
+	@Column(name = "Status", nullable = false)
 	private boolean status;
 
 	public employeeStatus() {
 	}
 
-	public employeeStatus(long id,String name, boolean status) {
-		this.id=id;
+	public employeeStatus(long id, String name, boolean status) {
+		this.id = id;
 		this.name = name;
 		this.status = status;
 	}
@@ -36,7 +36,7 @@ public class employeeStatus {
 	public employeeStatus(String name, boolean status) {
 		this.name = name;
 		this.status = status;
-		
+
 	}
 
 	public long getId() {
@@ -62,9 +62,5 @@ public class employeeStatus {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
-	
-	
-	
 
 }

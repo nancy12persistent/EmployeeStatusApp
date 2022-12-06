@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import com.availability.employeeStatus.EmployeeRepository.EmployeeRepository;
 import com.availability.employeeStatus.model.employeeStatus;
 import com.availibility.employeeStatus.service.EmployeeService;
+
+
 @Service
 public class EmployeeServiceimpl implements EmployeeService {
 	private EmployeeRepository employeeRepositoryA;
-	
-	
 
 	public EmployeeServiceimpl(EmployeeRepository employeeRepositoryA) {
 		super();
@@ -25,49 +25,55 @@ public class EmployeeServiceimpl implements EmployeeService {
 
 	@Override
 	public String updateEmployeeName(employeeStatus employee, String name) {
-       employeeStatus existingemployee= employeeRepositoryA.findByName(name);
-		
+		employeeStatus existingemployee = employeeRepositoryA.findByName(name);
+
 		existingemployee.setName(employee.getName());
 		employeeRepositoryA.save(existingemployee);
-		return("Name changed");
-		}
-      
+		return ("Name changed");
+	}
 
 	@Override
-	public String deleteEmployee(String name) {
-		employeeStatus emp=employeeRepositoryA.findByName(name);
-		if(emp.isStatus()) {
-		emp.setStatus(false);
-		employeeRepositoryA.save(emp);
-		return("Status changed");	
+	public String updateEmployeeStatus(String name) {
+		employeeStatus emp = employeeRepositoryA.findByName(name);
+		if (emp.isStatus()) {
+			emp.setStatus(false);
+			employeeRepositoryA.save(emp);
+			return ("Status changed");
+		} else {
+			return ("Status not changed");
 		}
-		else {
-			return("Status not changed");
-		}
-			
+
 	}
 
 	@Override
 	public List<employeeStatus> getAllEmployeesStatus() {
 		return employeeRepositoryA.findAll();
-	
+
+	}
+
+	public employeeStatus findByNameMethod(String name) {
+		return employeeRepositoryA.findByName(name);
+
+	}
+
+	public boolean checkStatus(String name) {
+		employeeStatus emp = employeeRepositoryA.findByName(name);
+		if (emp.isStatus()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
-	 public employeeStatus findByNameMethod(String name){
-			return employeeRepositoryA.findByName(name);
-			
+
+	@Override
+	public boolean matchRegex(employeeStatus employee) {
+		if (employee.getName().matches("^[a-zA-Z0-9_ ]*$")) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	 
-	 public boolean checkStatus(String name) {
-		 employeeStatus emp=employeeRepositoryA.findByName(name);
-		 if(emp.isStatus()) {
-			 return true;
-		 }
-		 else {
-			 return false;
-		 }
-	 }
 
 }
-
-

@@ -15,8 +15,11 @@ public class EmployeeStatusApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeStatusApplication.class, args);
 	}
+
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.availability.employeeStatus")).paths(PathSelectors.any()).build();		
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.availability.employeeStatus")).paths(PathSelectors.any())
+				.build();
 	}
 }

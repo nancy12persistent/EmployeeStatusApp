@@ -10,7 +10,7 @@ public interface EmployeeService {
 	
 	String updateEmployeeName(employeeStatus employee,String name);
 	
-	String deleteEmployee(String name);
+	String updateEmployeeStatus(String name);
 	
 	List<employeeStatus> getAllEmployeesStatus();
 	
@@ -18,5 +18,5 @@ public interface EmployeeService {
 	
 	boolean checkStatus(String name);
 	
-
+	boolean matchRegex(employeeStatus employee);
 }

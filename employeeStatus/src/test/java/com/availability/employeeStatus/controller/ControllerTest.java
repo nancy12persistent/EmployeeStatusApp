@@ -111,7 +111,7 @@ public class ControllerTest extends EmployeeStatusTest{
 	@Test
      public void setStatusFalse()throws Exception { 
         emp1.setStatus(false);
-        Mockito.when(employeeService.deleteEmployee(emp1.getName())).thenReturn("Status updated");
+        Mockito.when(employeeService.updateEmployeeStatus(emp1.getName())).thenReturn("Status updated");
         // when -  action or the behaviour that we are going test
         ResultActions response = mockMvc.perform(put("/employees/updateStatus/{name}", emp1.getName()));
      // then - verify the output

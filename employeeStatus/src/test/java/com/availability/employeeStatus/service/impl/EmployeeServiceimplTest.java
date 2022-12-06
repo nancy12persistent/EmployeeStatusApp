@@ -75,7 +75,7 @@ public class EmployeeServiceimplTest {
     	given(repo.findByName("Namisha Gupta")).willReturn(employee);
     	employee.setStatus(false);   	
     	// when-action or the behaviour that we are going test
-    	service.deleteEmployee("Namisha Gupta");
+    	service.updateEmployeeStatus("Namisha Gupta");
     	// then - verify the output
     	        assertThat(employee.isStatus()).isEqualTo(false);
     	     
